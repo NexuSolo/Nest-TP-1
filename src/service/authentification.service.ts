@@ -6,8 +6,6 @@ export class AuthentificationService {
     utilisateurs : Utilisateur[] = [];
     nombreUtilisateurs : number = 0;
 
-    constructor() {}
-
     authentification(utilisateur : Utilisateur): Utilisateur {
         let user = this.utilisateurs.find(u => u.nom == utilisateur.nom && u.password == utilisateur.password);
         if(user) {

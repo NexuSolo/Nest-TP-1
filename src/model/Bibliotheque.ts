@@ -1,6 +1,6 @@
 import { Livre } from "./livre";
 
-export interface Bibliothèque {
+export interface Bibliotheque {
     id: number;
     nom: string;
     livres: Livre[];
