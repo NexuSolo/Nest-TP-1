@@ -6,8 +6,11 @@ export class AuthentificationService {
     utilisateurs : Utilisateur[] = [];
     nombreUtilisateurs : number = 0;
 
-    authentification(utilisateur : Utilisateur): Utilisateur {
+    authentification(utilisateur : Utilisateur): Utilisateur {        
+        console.log('utilisateurs', this.utilisateurs);        
         let user = this.utilisateurs.find(u => u.nom == utilisateur.nom && u.password == utilisateur.password);
+        console.log('user', user);
+        
         if(user) {
             return user;
         }
@@ -17,6 +20,8 @@ export class AuthentificationService {
     inscription(utilisateur: Utilisateur) {
         utilisateur.id = this.nombreUtilisateurs++;
         this.utilisateurs.push(utilisateur);
+        console.log('utilisateurs', this.utilisateurs);        
+
         return utilisateur;
     }
 

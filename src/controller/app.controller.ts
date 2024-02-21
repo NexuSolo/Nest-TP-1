@@ -27,26 +27,6 @@ export class AppController {
     return this.bibliothequeService.getBibliotheque(id);
   }
 
-  @Post('livre/add')
-  addLivre(livre: Livre): Livre {
-    return this.bibliothequeService.addLivre(livre);
-  }
-
-  @Post('bibliotheque/add')
-  addBibliotheque(bibliotheque: Bibliotheque): Bibliotheque {
-    return this.bibliothequeService.addBibliotheque(bibliotheque);
-  }
-
-  @Post('livre/delete/:id')
-  deleteLivre(@Param('id', ParseIntPipe) id: number): Livre {
-    return this.bibliothequeService.deleteLivre(id);
-  }
-
-  @Post('bibliotheque/delete/:id')
-  deleteBibliotheque(@Param('id', ParseIntPipe) id: number): Bibliotheque {
-    return this.bibliothequeService.deleteBibliotheque(id);
-  }
-
   @Put('livre/emprunter/:id')
   emprunterLivre(@Param('id', ParseIntPipe) id: number): Livre {
     return this.bibliothequeService.emprunterLivre(id);
