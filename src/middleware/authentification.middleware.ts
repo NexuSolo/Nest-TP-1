@@ -1,5 +1,5 @@
 import { Injectable, NestMiddleware, UnauthorizedException } from '@nestjs/common';
-import { NextFunction } from 'express';
+import { NextFunction, Request } from 'express';
 import { AuthentificationService } from 'src/service/authentification.service';
 
 @Injectable()
@@ -8,11 +8,14 @@ export class AuthentificationMiddleware implements NestMiddleware {
   constructor(private readonly authentificationService : AuthentificationService) {}
 
   use(req: Request, res: Response, next: NextFunction) {
-    let utilisateur = this.authentificationService.authentification({id: null, nom: req.headers['nom'], password: req.headers['password'], role: null});
+    const nom: string = String(req.query.nom);
+    const password: string = String(req.query.password )
+    const role: string = String(req.query.role);
+    console.log('Request...', req.method, req.url, nom, password, role);
+    let utilisateur = this.authentificationService.authentification({id: null, nom: nom, password: password, role: role});
     if(utilisateur == null) {
       throw new UnauthorizedException('Utilisateur non authentifié')
     }
-    console.log('Request...', req.method, req.url, req.headers['nom'], req.headers['password'], req.headers['role']);
     next();
     return;
   }

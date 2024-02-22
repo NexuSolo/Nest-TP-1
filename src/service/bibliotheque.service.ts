@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { ConflictException, Injectable, NotFoundException } from '@nestjs/common';
 import { Bibliotheque } from 'src/model/Bibliotheque';
 import { Livre } from 'src/model/livre';
 
@@ -24,11 +24,11 @@ export class BibliothequeService {
     throw new NotFoundException('Livre not found');
   }
   
-  getAllLivre() : {livre : Livre, bibliotheque : Bibliotheque}[] {
+  getAllLivre() : {livre : Livre, bibliothequeId : number}[] {
     let res = [];
     this.bibliotheque.forEach((bibliotheque) => {
       bibliotheque.livres.forEach((livre) => {
-        res.push({livre, bibliotheque});
+        res.push({livre, bibliothequeId: bibliotheque.id});
       });
     });
     return res;
@@ -39,10 +39,13 @@ export class BibliothequeService {
   }
   
   addLivre(livre: Livre, bibliothequeId: number): Livre {
-    let res = this.bibliotheque.find((bibliotheque) => bibliotheque.id === bibliothequeId);
-    if (res) {
+    console.log("addLivre", livre, bibliothequeId);
+    
+    let bibliotheque = this.bibliotheque.find((bibliotheque) => bibliotheque.id == bibliothequeId);
+    if (bibliotheque) {
       livre.id = this.nombreLivre++;
-      res.livres.push(livre);
+      livre.disponible = true;
+      bibliotheque.livres.push(livre);
       return livre;
     }
     throw new NotFoundException('Bibliotheque not found');
@@ -65,17 +68,24 @@ export class BibliothequeService {
   }
   
   deleteBibliotheque(id: number): Bibliotheque {
-    let index = this.bibliotheque.findIndex((bibliotheque) => bibliotheque.id === id);
-    if (index !== -1) {
-      return this.bibliotheque.splice(index, 1)[0];
+    let bibliothequeIndex = this.bibliotheque.findIndex((bibliotheque) => bibliotheque.id === id);
+    if (bibliothequeIndex !== -1) {
+      let bibliotheque = this.bibliotheque[bibliothequeIndex];
+      for(let livre of bibliotheque.livres) {
+        this.deleteLivre(livre.id);
+      }
+      return this.bibliotheque.splice(bibliothequeIndex, 1)[0];
     }
     throw new NotFoundException('Bibliotheque not found');
   }
   
   emprunterLivre(id: number): Livre {
     let livre = this.getLivreById(id);
-    if (livre.disponible) {
-      throw new Error('Livre déjà emprunté');
+    if(!livre) {
+      throw new NotFoundException('Livre not found');
+    }
+    if (!livre.disponible) {
+      throw new ConflictException('Livre déjà emprunté');
     }
     livre.disponible = false;
     return livre;
@@ -84,7 +94,7 @@ export class BibliothequeService {
   rendreLivre(id: number): Livre {
     let livre = this.getLivreById(id);
     if (livre.disponible) {
-      throw new Error('Livre déjà rendu');
+      throw new ConflictException('Livre déjà rendu');
     }
     livre.disponible = true;
     return livre;
