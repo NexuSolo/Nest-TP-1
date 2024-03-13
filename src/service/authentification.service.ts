@@ -14,7 +14,6 @@ export class AuthentificationService {
     authentification(utilisateur : Utilisateur): Utilisateur {        
         console.log('utilisateurs', this.utilisateurs);        
         let user = this.utilisateurs.find(u => u.nom == utilisateur.nom && u.password == utilisateur.password);
-        console.log('user', user);
         
         if(user) {
             return user;

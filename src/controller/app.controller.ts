@@ -13,7 +13,7 @@ export class AppController {
   }
 
   @Get('livre')
-  getAllLivre(): {livre : Livre, bibliotheque : Bibliotheque}[] {
+  getAllLivre(): {livre : Livre, bibliothequeId : number}[] {
     return this.bibliothequeService.getAllLivre();
   }
 
@@ -29,6 +29,7 @@ export class AppController {
 
   @Put('livre/emprunter/:id')
   emprunterLivre(@Param('id', ParseIntPipe) id: number): Livre {
+    console.log('emprunterLivre', id);
     return this.bibliothequeService.emprunterLivre(id);
   }
 
