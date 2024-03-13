@@ -1,8 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { Utilisateur } from 'src/model/Utilisateur';
 
 @Injectable()
 export class AuthentificationService {
+
+  constructor(@Inject('USERS') private users: Utilisateur[]) {
+        this.utilisateurs = users;
+    }
+
     utilisateurs : Utilisateur[] = [];
     nombreUtilisateurs : number = 0;
 

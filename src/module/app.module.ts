@@ -9,9 +9,9 @@ import { AdminMiddleware } from 'src/middleware/admin.middleware';
 import { AdminController } from 'src/controller/admin.controller';
 
 @Module({
-  imports: [AuthentificationModule.register()],
+  imports: [AuthentificationModule.register([{id: 1, nom: 'admin', password: 'admin', role: 'admin'}])],
   controllers: [AppController, AuthentificationController, AdminController],
-  providers: [BibliothequeService, AuthentificationService],
+  providers: [BibliothequeService],
 })
 export class AppModule implements NestModule {
 
