@@ -1,0 +1,612 @@
+{
+	"info": {
+		"_postman_id": "8a943fd1-c14a-4451-9664-866b100d6a69",
+		"name": "TP1 Nest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17846874"
+	},
+	"item": [
+		{
+			"name": "Inscription Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Test2\",\r\n    \"password\": \"123\",\r\n    \"role\" : \"ADMIN\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authentification/inscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authentification",
+						"inscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Inscription User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Test\",\r\n    \"password\": \"123\",\r\n    \"role\" : \"USER\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authentification/inscription",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authentification",
+						"inscription"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentifiation Admin",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Test2\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authentification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authentification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentifiation User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"Test\",\r\n    \"password\": \"123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/authentification",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"authentification"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Création bibliotheque",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"nom\": \"b1\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/bibliotheque/add?nom=Test2&password=123&id=0&role=ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"bibliotheque",
+						"add"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test2"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "0"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Création Livre",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"livre\": {\r\n        \"nom\": \"livre1\"\r\n    },\r\n    \"bibliothequeId\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/livre/add?nom=Test2&password=123&id=0&role=ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"livre",
+						"add"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test2"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "0"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Livre",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/livre/delete/0?nom=Test2&password=123&id=0&role=ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"livre",
+						"delete",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test2"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "0"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Bibliothque",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/admin/bibliotheque/delete/0?nom=Test2&password=123&id=0&role=ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"admin",
+						"bibliotheque",
+						"delete",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test2"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "0"
+						},
+						{
+							"key": "role",
+							"value": "ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bibliothque",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bibliotheque?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bibliotheque"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Livre",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livre?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livre"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Livre By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livre/0?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livre",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bibliotheque By ID",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/bibliotheque/0?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"bibliotheque",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Emprunter Livre",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livre/emprunter/0?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livre",
+						"emprunter",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Rendre Livre",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/livre/rendre/0?nom=Test&password=123&id=1&role=USER",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"livre",
+						"rendre",
+						"0"
+					],
+					"query": [
+						{
+							"key": "nom",
+							"value": "Test"
+						},
+						{
+							"key": "password",
+							"value": "123"
+						},
+						{
+							"key": "id",
+							"value": "1"
+						},
+						{
+							"key": "role",
+							"value": "USER"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
